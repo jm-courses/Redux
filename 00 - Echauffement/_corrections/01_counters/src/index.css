@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
+}
+
+.App {
+  padding: 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.actions {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.counters-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.counter {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  box-shadow: 0 0 0.5rem #dfdfdf;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.counter span {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.counter button {
+  padding: 0.25em 0.75em;
+  font-family: monospace;
+}
+
+button {
+  background-color: rgb(60, 170, 255);
+  color: #ffffff;
+  border: none;
+  border-radius: 2px;
+  padding: 0.45em 0.9em;
+  margin: 0.1em;
+  text-shadow: 1px 1px 1px rgb(78 78 78 / 42%);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(41, 147, 227);
+}
+
+button:active {
+  background-color: rgb(28, 127, 203);
+}
