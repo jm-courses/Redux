@@ -32,7 +32,7 @@ const reducer = (state, action) => {
 Nous importerons tout d'abord **createStore** tout en haut de notre fichier.
 
 > **Note :**
-> Depuis Avril 2022, il est conseillé d'utiliser `@reduxjs/toolkit` à la place de `redux`. Cependant, les concepts de `redux` restent en application, et sont encore utilisés sans Redux Toolkit dans beaucoup d'applications, c'est pourquoi il est intéressant de l'étudier dans ce cours.
+> Depuis Avril 2022, il est conseillé d'utiliser `@reduxjs/toolkit` à la place de `redux`. Cependant, les _concepts_ de `redux` sont toujours valables et sont encore utilisés sans Redux Toolkit dans beaucoup d'applications web, c'est pourquoi il est intéressant de l'étudier dans ce cours.
 > De plus, Redux Toolkit  fournit beaucoup d'éléments et peut être perturbant pour débuter.
 
 ```js
@@ -41,7 +41,7 @@ import { createStore } from 'redux';
 // Définition de la source de vérité
 const stateInit = {
     count : 0,
-    questions : []
+    messages : []
 }
 ```
 
@@ -49,15 +49,15 @@ Puis nous définissons un reducer qui contiendra **la logique algorithmique** de
 
 ```js
 // Définition du Reducer
-const questionsReducer = (state = stateInit, action = {}) => {
+const messagesReducer = (state = stateInit, action = {}) => {
     // Gestion des actions du Reducer
     switch(action.type){
-        case 'ADD_QUESTION':
+        case 'ADD_MESSAGE':
            
            // On doit retourner un nouveau state (sans toucher à la source de vérité)
             return { 
                 ...state, 
-                questions : state.questions.concat(action.question),
+                messages : state.messages.concat(action.payload),
                 count : state.count + 1
             };
 
@@ -67,7 +67,7 @@ const questionsReducer = (state = stateInit, action = {}) => {
     }
 }
 
-export default questionsReducer;
+export default messagesReducer;
 ```
 
 ## Précision JS pour la modification du state dans Redux
@@ -100,10 +100,10 @@ const nS = Object.assign({}, state, deltaState );
 Nous allons maintenant créer le store et passer le reducer à ce dernier, la méthode getState nous retournera le contenu du store :
 
 ```js
-import questionsReducer from 'questionsReducer';
+import appReducer from 'appReducer';
 
 // Création du store avec le reducer
-const store = createStore(questionsReducer);
+const store = createStore(appReducer);
 
 // état initial
 console.log('state init', store.getState());
@@ -114,8 +114,8 @@ La méthode dispatch permet de dispatcher une action et des données. C'est dans
 ```js
 // Dispatcher des données pour une action
 store.dispatch({
-    type : 'ADD_QUESTION',
-    question : "Comment compiler React ?"
+    type : 'ADD_MESSAGE',
+    payload : "Comment compiler React ?"
 });
 
 // REDUCER ...
@@ -130,7 +130,7 @@ Pour écouter les changements du state on s'y abonnera à l'aide de la fonction 
 
 ```js
 // s'abonner au store et écouter ses changements
-store.subscribe(() => console.log(store.getState().questions) ) ;
+store.subscribe(() => console.log(store.getState().messages) ) ;
 ```
 
 ## 02 Exemple Redux
