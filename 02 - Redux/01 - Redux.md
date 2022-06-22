@@ -31,6 +31,10 @@ const reducer = (state, action) => {
 
 Nous importerons tout d'abord **createStore** tout en haut de notre fichier.
 
+> **Note :**
+> Depuis Avril 2022, il est conseillé d'utiliser `@reduxjs/toolkit` à la place de `redux`. Cependant, les concepts de `redux` restent en application, et sont encore utilisés sans Redux Toolkit dans beaucoup d'applications, c'est pourquoi il est intéressant de l'étudier dans ce cours.
+> De plus, Redux Toolkit  fournit beaucoup d'éléments et peut être perturbant pour débuter.
+
 ```js
 import { createStore } from 'redux';
 
