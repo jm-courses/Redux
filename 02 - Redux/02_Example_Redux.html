@@ -3,9 +3,25 @@
   <head>
     <title>Redux basic example</title>
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <style>
+      html {
+        font-family: sans-serif; 
+        color: #333;
+      }
+      #root {
+        font-family: monospace;
+        background-color: azure;
+        padding: 0.5rem 1rem;
+        color: #000;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <h1>🎳 Redux example</h1>
+    <p>Ouvrez la console web pour intéragir avec Redux 👍</p>
+    <hr>
+    <p>Contenu du store  :</p>
+    <pre id="root"></pre>
     <script>
       // initialisation du state Source de véritié
       const stateInit = {
@@ -17,14 +33,8 @@
         switch (action.type) {
           case "ADD_MESSAGE":
             // lire la source de véritié
-            const messages = [...state.messages, action.message];
-
+            const messages = [...state.messages, action.payload];
             // on crée un nouvel état => nouvel objet
-            // return { ...state, messages }
-
-            // return Object.assign({}, state, {messages : messages });
-
-            // copie du state new state newState = { ...state }, c'est un clone du state
             return { ...state, messages };
 
           default:
@@ -32,42 +42,53 @@
         }
       };
 
+      const onNewMessage = () => {
+        // on peut ici programmer des interactions avec le DOM
+        const { messages } = store.getState();
+
+        const root = document.getElementById("root");
+        
+        root.innerHTML = JSON.stringify(messages, null, 2);
+      }
+
       // définition du store
       const store = Redux.createStore(messageReducer);
 
       // subscribe au state global pour voir les changements
       // On écoute les changement et on lit les changements pour les afficher ou les traiter dans l'application
-      const unsubscribe = store.subscribe(() => {
-        // on peut ici programmer des interactions avec le DOM
-        console.log("message", store.getState());
-        const { messages } = store.getState();
-
-        const root = document.getElementById("root");
-        let m = "";
-        for (const message of messages) {
-          m += `<p> ${message} <p/>`;
-        }
-
-        root.innerHTML = m;
-      });
-
-      // lire le state dans l'application
-      console.log("state initiale", store.getState());
+      const unsubscribe = store.subscribe(onNewMessage);
 
       // dispatch les données dans le store global
       // type définir les actions
       // Dans l'application on peut déclencher des actions dans le store
-      store.dispatch({ type: "ADD_MESSAGE", message: "Hello world 1 !" });
-      store.dispatch({ type: "ADD_MESSAGE", message: "Hello world 2 !" });
-      store.dispatch({ type: "ADD_MESSAGE", message: "Hello world 3 !" });
-      store.dispatch({ type: "ADD_MESSAGE", message: "Hello world 4 !" });
-      store.dispatch({ type: "ADD_MESSAGE", message: "Hello world 5 !" });
+      store.dispatch({ type: "ADD_MESSAGE", payload: "Hello world 1 !" });
+      store.dispatch({ type: "ADD_MESSAGE", payload: "Hello world 2 !" });
+      store.dispatch({ type: "ADD_MESSAGE", payload: "Hello world 3 !" });
+      store.dispatch({ type: "ADD_MESSAGE", payload: "Hello world 4 !" });
+      store.dispatch({ type: "ADD_MESSAGE", payload: "Hello world 5 !" });
 
       // fonction de callback qui permet de de désinscrire du subscribe de l'écoute.
-      unsubscribe();
+      // unsubscribe();
 
-      store.dispatch({ type: "ADD_MESSAGE", message: "Hello world 6 !" });
+    </script>
 
+    <script>
+      console.log('%c BIENVENUE DANS 🎳 REDUX EXAMPLE !', 'background-color:magenta; color:black; font-weight: bold;font-size:20px');
+      console.log('%c Instructions Redux que vous pouvez taper dans la console :\n', 'color:magenta');
+
+      console.log('    %c> %cstore.getState();', 'color:gray', 'color:white');
+      console.log('      %c(Récupère le state de l\'application)', 'color:gray');
+
+      console.log('    %c> %cstore.dispatch(%c{ type: \'ADD_MESSAGE\', payload: \'Hello World\' }%c);', 'color:gray', 'color:white', 'color:yellow', 'color:white');
+      console.log('      %cDispatche une action pour ajouter un nouveau message', 'color:gray');
+      
+      console.log('    %c> %clet %cunsubscribe %c= store.subscribe(%c () => { … } %c);', 'color:gray', 'color:white', 'color:yellow', 'color:white', 'color:yellow', 'color:white');
+      console.log('      %cInscrit une fonction qui sera déclanchée à chaque fois que le store aura été modifié', 'color:gray');
+      
+      console.log('    %c> %cunsubscribe%c();', 'color:gray', 'color:yellow', 'color:white');
+      console.log('      %cDésinscrit le déclanchement de la fonction enregistrée avec cet identifiant', 'color:gray');
+
+      console.log('%c——————————————————————————————————————————————————————————————————————', 'color:magenta');
     </script>
   </body>
 </html>

@@ -294,8 +294,27 @@ Connectez-vous sur l'URL suivante et complétez les instructions définies dans 
 
 https://stackblitz.com/edit/react-context-02
 
-# Exercice 03 Final
+# Exercice 03 
 
+Récupérez le dossier **`03 - TodoApp`** fourni, et installez les dépendances :
 
+```bash
+npm install
+```
 
-Dans le dossier `./src/01/` du projet `redux-playground`, complétez dans les différents fichiers les annotations `// TODO` en commentaire pour faire fonctionner la TodoList.
+Lancez le projet :
+
+```bash
+npm start
+```
+
+Complétez dans les différents fichiers les annotations `// TODO` en commentaire pour faire fonctionner la TodoList.
+
+Vous devez :
+
+- Créer le contexte
+- Brancher le Provider du contexte sur l'app
+- Écrire le contenu du reducer
+- Utiliser `useReducer` dans l'app
+- Dispatcher les différentes actions (création, suppression, modification de status)
+- Afficher le nombre de todos faites

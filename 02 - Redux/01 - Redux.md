@@ -8,8 +8,6 @@ On pourra souscrire au state global, depuis n'importe quel composant, et récup�
 
 Redux impose un pattern au niveau de ses states. En effet,le state global sera notre source de vérité, à chaque fois qu'on voudra le changer on retournera une copie du state, sans toucher à la source de vérité.
 
-![Reducer](images/reducer.png)
-
 ## Présentation du reducer
 
 **Redux c'est Reducer + flux ce qui donne Redux.**
@@ -28,17 +26,6 @@ const reducer = (state, action) => {
 - Le state est en "read-only" (lecture seule).
 - Les changements du state sont faits par des fonctions pures, aucun effet de bord; pour une valeur donnée on retournera toujours la même valeur.
 
-## Installation
-
-Dans le dossier `./src/02/` du projet `redux-playground`,
-
-Tapez les lignes de code suivantes à la racine de votre projet :
-
-```bash
-npm install redux
-```
-
-Notez que vous pouvez également utiliser yarn pour installer ces dépendances. Faites cependant attention à ne pas mélanger les deux approches en particulier vérifier que vous n'avez pas deux fichiers yarn.lock et package-lock.json dans votre projet pour éviter les conflits.
 
 ### Exemple
 
@@ -145,3 +132,30 @@ store.subscribe(() => console.log(store.getState().questions) ) ;
 ## 02 Exemple Redux
 
 Voyez dans les sources un exemple de code Redux pour vous faire une idée de son utilisation fichier **02_Example_Redux.html**.
+
+Ouvrez ce fichier HTML dans un navigateur simple et ouvrez l'inspecteur d'élément (onglet "Console") pour tester les instructions basiques de Redux.
+
+
+## 03 Exercice
+
+Récupérez le dossier **`03 - Chat`** fourni, et installez les dépendances :
+
+```bash
+npm install
+```
+
+Lancez le projet :
+
+```bash
+npm start
+```
+
+Complétez dans les différents fichiers les annotations `// TODO` en commentaire pour faire fonctionner la TodoList.
+
+Vous devez :
+
+- Créer un store avec la fonction "createStore" de Redux
+- Écrire le reducer pour ajouter un message au chat, et purger le chat
+- Souscrire au store pour mettre à jour les données dans l'App
+- Lister les messages du chat avec leur date et contenu
+- Dispatcher les actions pour ajouter un message, et purger le chat
