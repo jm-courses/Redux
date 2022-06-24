@@ -289,8 +289,6 @@ const todoSlice = createSlice({
             })
     }
 });
-
-export 
 ```
 
 Et après il suffit de dispatcher l'action depuis un composant :
