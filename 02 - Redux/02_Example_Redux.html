@@ -76,16 +76,16 @@
       console.log('%c BIENVENUE DANS 🎳 REDUX EXAMPLE !', 'background-color:magenta; color:black; font-weight: bold;font-size:20px');
       console.log('%c Instructions Redux que vous pouvez taper dans la console :\n', 'color:magenta');
 
-      console.log('    %c> %cstore.getState();', 'color:gray', 'color:white');
+      console.log('    %c> %cstore.getState();', 'color:gray', 'color:white;background:black;');
       console.log('      %c(Récupère le state de l\'application)', 'color:gray');
 
-      console.log('    %c> %cstore.dispatch(%c{ type: \'ADD_MESSAGE\', payload: \'Hello World\' }%c);', 'color:gray', 'color:white', 'color:yellow', 'color:white');
+      console.log('    %c> %cstore.dispatch(%c{ type: \'ADD_MESSAGE\', payload: \'Hello World\' }%c);', 'color:gray', 'color:white; background:black', 'color:yellow; background:black', 'color:white; background:black');
       console.log('      %cDispatche une action pour ajouter un nouveau message', 'color:gray');
       
-      console.log('    %c> %clet %cunsubscribe %c= store.subscribe(%c () => { … } %c);', 'color:gray', 'color:white', 'color:yellow', 'color:white', 'color:yellow', 'color:white');
+      console.log('    %c> %clet %cunsubscribe %c= store.subscribe(%c () => { … } %c);', 'color:gray', 'color:white;background:black', 'color:yellow;background:black', 'color:white;background:black', 'color:yellow;background:black', 'color:white;background:black');
       console.log('      %cInscrit une fonction qui sera déclanchée à chaque fois que le store aura été modifié', 'color:gray');
       
-      console.log('    %c> %cunsubscribe%c();', 'color:gray', 'color:yellow', 'color:white');
+      console.log('    %c> %cunsubscribe%c();', 'color:gray', 'color:yellow;background:black', 'color:white;background:black');
       console.log('      %cDésinscrit le déclanchement de la fonction enregistrée avec cet identifiant', 'color:gray');
 
       console.log('%c——————————————————————————————————————————————————————————————————————', 'color:magenta');
